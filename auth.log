@@ -1,0 +1,7 @@
+May 11 10:01:22 servidor sshd[1234]: Accepted password for root from 192.168.0.15 port 54321
+May 11 10:05:01 servidor sshd[4521]: Failed password for invalid user admin from 203.0.113.42 port 33211
+May 11 10:05:05 servidor sshd[4521]: Failed password for root from 203.0.113.42 port 33215
+May 11 10:05:09 servidor sshd[4521]: Failed password for root from 203.0.113.42 port 33219
+May 11 10:10:00 servidor sshd[5522]: Connection closed by 8.8.8.8 port 12345
+May 11 10:12:33 servidor sshd[6100]: Failed password for root from 203.0.113.42 port 33225
+May 11 10:15:10 servidor sshd[6201]: Accepted password for higor from 10.0.0.5 port 44123
