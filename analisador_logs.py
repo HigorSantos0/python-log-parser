@@ -7,7 +7,6 @@ import os
 arquivo_log = "auth.log"
 print("Iniciando análise de segurança e geolocalização...\n")
 
-# 1. Criei um Dicionário vazio para guardar a contagem de cada IP
 contagem_ips = {}
 
 # ==========================================
@@ -38,20 +37,19 @@ if not os.path.exists(pasta_saida):
 caminho_csv = f"{pasta_saida}/alertas_seguranca.csv"
 caminho_blacklist = f"{pasta_saida}/blacklist.txt"
 
-# NOVIDADE: Lemos a blacklist atual para garantir dados únicos (Lógica de 'Distinct')
+#Lemos a blacklist atual para garantir dados únicos
 ips_ja_bloqueados = set()
 if os.path.exists(caminho_blacklist):
     with open(caminho_blacklist, "r", encoding="utf-8") as arquivo_txt:
         for linha in arquivo_txt:
-            # O .strip() remove a quebra de linha invisível ao ler
             ips_ja_bloqueados.add(linha.strip())
 
-# Abrimos os arquivos para adicionar os novos dados
+# Adicionando novos dados
 with open(caminho_csv, "a", newline="", encoding="utf-8") as arquivo_csv:
     with open(caminho_blacklist, "a", encoding="utf-8") as arquivo_txt:
         escritor = csv.writer(arquivo_csv)
         
-        # Só escrevemos o cabeçalho se o CSV estiver vazio (posição 0)
+        # Só escreve se estiver vazio
         if arquivo_csv.tell() == 0:
             escritor.writerow(["IP", "Tentativas", "Cidade", "Pais"])
 
@@ -82,7 +80,7 @@ with open(caminho_csv, "a", newline="", encoding="utf-8") as arquivo_csv:
                     
                     arquivo_txt.write(ip + "\n")
                     
-                    # Atualizamos o set em memória para garantir
+                    # atualizado em memória
                     ips_ja_bloqueados.add(ip)
                         
                 except Exception as e:
